@@ -7,7 +7,7 @@
         <h1>Teste Estágio</h1>
         <h3>Digite o Símbolo da Ação:</h3>
         <input type="text" id="simboloAcao">
-        <button onclick ="buscar()">Mostrar Informações</button>
+        <button onclick ="buscar()">Mostrar Informações</button><br/><br/>
         <div>Nome da Empresa: <span id="companyName"></span></div><br/>
         <div>Último Valor da Ação : <span id="latestPrice"></span></div><br/>
         <div>Indústria : <span id="industry"></span></div><br/>
@@ -28,15 +28,17 @@
                     document.getElementById("description").innerText= acao.description;
                     document.getElementById("sector").innerText= acao.sector;
                     document.getElementById("CEO").innerText= acao.CEO;
+                }).catch(function(erro){
+                    if (erro.response && erro.response.status == 404){
+                        alert("Símbolo da Ação Não Encontrado");
+                    }
                 })
                 axios(urlacao).then(function(acao){
                     var acao = acao.data;
                     document.getElementById("latestPrice").innerText= acao.latestPrice;
                 })
             }
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+        </script> 
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>
