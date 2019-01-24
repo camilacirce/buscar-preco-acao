@@ -2,19 +2,22 @@
 <html>
     <head>
         <title>Teste Estágio</title>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+        <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
     </head>
-    <body>
+    <body style="padding:20px">
         <h1>Teste Estágio</h1>
         <h3>Digite o Símbolo da Ação:</h3>
         <input type="text" id="simboloAcao">
         <button onclick ="buscar()">Mostrar Informações</button><br/><br/>
-        <div>Nome da Empresa: <span id="companyName"></span></div><br/>
-        <div>Último Valor da Ação : <span id="latestPrice"></span></div><br/>
-        <div>Indústria : <span id="industry"></span></div><br/>
-        <div>Website : <span id="website"></span></div><br/>
-        <div>Descrição da Empresa : <span id="description"></span></div><br/>
-        <div>CEO : <span id="CEO"></span></div><br/>
-        <div>Setor : <span id="sector"></span></div><br/>
+        <div>Nome da Empresa: <span id="companyName"></span></div>
+        <div>Último Valor da Ação : <span id="latestPrice"></span></div>
+        <div>Indústria : <span id="industry"></span></div>
+        <div>Website : <span id="website"></span></div>
+        <div>Descrição da Empresa : <span id="description"></span></div>
+        <div>CEO : <span id="CEO"></span></div>
+        <div>Setor : <span id="sector"></span></div>
         <script>
             function buscar(){
                 var simboloAcao = document.getElementById("simboloAcao").value;
