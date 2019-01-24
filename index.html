@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Teste Estágio</title>
+    </head>
+    <body>
+        <h1>Teste Estágio</h1>
+        <h3>Digite o Símbolo da Ação:</h3>
+        <input type="text" id="simboloAcao">
+        <button onclick ="buscar()">Mostrar Informações</button>
+        <div>Nome da Empresa: <span id="companyName"></span></div><br/>
+        <div>Último Valor da Ação : <span id="latestPrice"></span></div><br/>
+        <div>Indústria : <span id="industry"></span></div><br/>
+        <div>Website : <span id="website"></span></div><br/>
+        <div>Descrição da Empresa : <span id="description"></span></div><br/>
+        <div>CEO : <span id="CEO"></span></div><br/>
+        <div>Setor : <span id="sector"></span></div><br/>
+        <script>
+            function buscar(){
+                var simboloAcao = document.getElementById("simboloAcao").value;
+                var urlinfo = "https://api.iextrading.com/1.0/stock/".concat(simboloAcao).concat("/company");
+                var urlacao = "https://api.iextrading.com/1.0/stock/".concat(simboloAcao).concat("/quote");
+                axios(urlinfo).then(function(acao){
+                    var acao = acao.data;
+                    document.getElementById("companyName").innerText= acao.companyName;
+                    document.getElementById("industry").innerText= acao.industry;
+                    document.getElementById("website").innerText= acao.website;
+                    document.getElementById("description").innerText= acao.description;
+                    document.getElementById("sector").innerText= acao.sector;
+                    document.getElementById("CEO").innerText= acao.CEO;
+                })
+                axios(urlacao).then(function(acao){
+                    var acao = acao.data;
+                    document.getElementById("latestPrice").innerText= acao.latestPrice;
+                })
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </body>
+</html>
